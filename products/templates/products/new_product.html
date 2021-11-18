@@ -1,0 +1,33 @@
+{% extends 'products/base.html' %}
+
+{% block page_header %}
+    <h1>New Product</h1>
+{% endblock page_header %}
+
+{% block content %}
+        <form action="{% url 'products:new_products' %}" method="post" enctype="multipart/form-data">
+            <div style="width: 50rem; margin-left: auto;
+                margin-right: auto;">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="small mb-1">Product Name</label>
+                            {{ form.name }}
+                        </div>
+                        <div class="form-group">
+                            <label class="small mb-1">Product Price</label>
+                            {{ form.price}}
+                        </div>
+                        <div class="form-group">
+                            <label class="small mb-1">Product Image</label>
+                            {{ form.image }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mt-4 mb-0">
+                    <input class="btn btn-primary" type="submit" value="Add Product">
+                </div>
+            </div>
+        </form>
+{% endblock content %}
